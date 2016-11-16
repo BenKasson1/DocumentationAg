@@ -12,11 +12,16 @@ also this might be a table:
 |-----|-----|
 |data|data|
 
-|How|Will|This|Look|?|
-|---|---|---|---|---|
-|Let's|Find|Out|:)|!|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|How  |Will|This|Look|?|
+|-----|----|----|----|-|
+|Let's|Find|Out |:)  |!|
+|  w  | o  | r  | d  |s|
+|  t  | e  | s  | t  |!|
+
+|                                  | Ambiq Micro[4] | STM32 L4[5] | EFM32[6]             | Atmel[7] |
+|----------------------------------|----------------|-------------|----------------------|----------|
+| Active mode consumption (µA/MHz) | 35             | 100         | 219                  | 35       |
+| Sleep mode consumption (nA)      | 143            | 120         | 1.1 x 10<sup>6</sup> | 900      |
 
 
 
