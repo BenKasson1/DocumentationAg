@@ -215,8 +215,7 @@ The sections to follow will cover the design alternatives for the microcontrolle
 
 Microcontroller
   
-Table 1: Microcontroller features
-  
+**Table 1: Microcontroller features**
   
 |                                  | Pi[2]                            | Mega[3]           | Ambiq Micro[4]                | STM32 L4[5]                  | EFM32[6]                     | Atmel[7]                     |
 |----------------------------------|----------------------------------|-------------------|-------------------------------|------------------------------|------------------------------|------------------------------|
@@ -225,8 +224,9 @@ Table 1: Microcontroller features
 | Processor                        | ARM Cortex-A53(1.2GHz)           | ATmega1280(16MHz) | 32-bit ARM Cortex-M4F (24MHz) | 32-bit ARM Cortex-M4 (80MHz) | 32-bit ARM Cortex-M3 (48MHz) | 32-bit ARM Cortex-M3 (48MHz) |
 | Wi-Fi                            | Yes                              | No                | No                            | No                           | No                           | No                           |
 | Bluetooth                        | Yes                              | No                | No                            | No                           | No                           | No                           |
-  
-  
+
+&nbsp;
+
 Six microcontrollers were considered as potential alternatives. The Mega, Pi, Ambiq Micro, STM32 L4, EFM32, and Atmel were considered as shown in Table 1. Active mode is the state in which the microcontroller runs its programs and ends by putting the microcontroller to sleep. Active mode consumption feature refers to the current (µA) required to go through 1 million clock cycles (1MHz). Sleep mode is a timed state in which all processes are shut off except for the timer that will “wake-up” the microcontroller once the sleep time has elapsed. Sleep mode consumption refers to the current (nA) required to keep the microcontroller on without executing any other instructions. Processor refers to the architecture used by the microcontroller. Wi-Fi and Bluetooth refer to the  available transmission protocols embedded in the microcontroller.
 Communication protocol
 Several protocols currently exist for wireless network communication, including ZigBee, WiFi, and Bluetooth. The IEEE 802.15.4 standard for low data rate wireless personal area networks , which will be used in this project, was completed in 2003 and was most recently updated in 2015 and will be followed by any wireless communication protocol selected for this project[8].
@@ -245,24 +245,27 @@ The sections to follow will cover the feasibility and merit analysis for the fol
 Microcontroller
 As per the client’s specifications, a sensor node should operate for a season without having to replace the batteries. To comply with this specification, the team set 500uA/MHz as a power consumption threshold. The microcontroller should also have a sleep-mode for a longer battery life. Sleep mode will significantly reduce the microcontroller’s power consumption. 
 shows the Mega and the Pi were the only two microcontrollers to not pass the feasibility criteria. 
-  
-  
-Table 2: Microcontroller feasibility analysis
+
+&nbsp;
+
+**Table 2: Microcontroller feasibility analysis**
   
 |                                    | Pi[2] | Mega[3] | Ambiq Micro[4] | STM32 L4[5] | EFM32[6] | Amtel[7] |
 |------------------------------------|-------|---------|----------------|-------------|----------|----------|
 | Consumption (less than 500 µA/MHz) | No    | No      | Yes            | Yes         | Yes      | Yes      |
 | Sleep Mode                         | No    | No      | Yes            | Yes         | Yes      | Yes      |
-  
-  
-Table 3: Microcontroller merit analysis
+
+&nbsp;
+
+**Table 3: Microcontroller merit analysis**
   
 |                                  | Ambiq Micro[4] | STM32 L4[5] | EFM32[6]             | Atmel[7] |
 |----------------------------------|----------------|-------------|----------------------|----------|
 | Active mode consumption (µA/MHz) | 35             | 100         | 219                  | 35       |
 | Sleep mode consumption (nA)      | 143            | 120         | 1.1 x 10<sup>6</sup> | 900      |
-  
-  
+
+&nbsp;
+
 The feasible options were then judged based on the merit criteria. The design of the software will have the microcontroller in sleep mode for a substantially larger amount of time than it will have it in active mode. This means that a low sleep mode current consumption value is more important than a low active mode current consumption value. Due to the greater weight of the sleep mode current consumption value, the STM32 L4 microcontroller, shown in Figure 1, was selected, as Table 3 shows it has the lowest sleep mode current consumption and the second lowest active consumption.
 
 Figure 1 STM32 L4 microcontroller[5]
@@ -271,9 +274,10 @@ Although the Pi, as shown in Figure 2, was not selected to be the node’s micro
 Figure 2 Raspberry Pi 3 Model B[2]
 Communication protocol
 As per the client’s specifications, the communication protocol had to be capable of wireless, low-power, communication with mesh network topology. The communication protocol also needed to have a transmission range greater than 10 meters to meet the teams additional specifications. Table 4 shows Bluetooth was the only wireless communication protocol to not pass the feasibility criteria, as it currently is not a mesh network capable communication protocol.
-  
-  
-Table 4 Communication protocol feasibility analysis
+
+&nbsp;
+
+**Table 4 Communication protocol feasibility analysis**
   
 |                    | Zigbee   | Wi-Fi     | Bluetooth[12] |
 |--------------------|----------|-----------|---------------|
@@ -281,15 +285,17 @@ Table 4 Communication protocol feasibility analysis
 | Low power          | Meets[8] | Meets[8]  | Meets         |
 | Wireless           | Meets[8] | Meets[8]  | Meets         |
 | Mesh network       | Meets[7] | Meets[8]  | Fails         |
-  
-  
+
+&nbsp;
+
 The feasible options were then judged based on the merit criteria. The maximum number of connectable nodes and battery life are more important than the maximum range and unit cost. The later pair was weighted less because both chip options considered have a communication range well beyond 40 meters and have a minimal cost difference. A ZigBee communication protocol chip was selected for this project. An example of which is shown in Figure 3. It was selected because, as shown in Table 5 on the following page, it has the greatest number of connections and the longer battery life.
 
 Figure 3 Microchip Technology MRF24J40MAT-I/RM ZigBee transceiver[25]
 
  
+&nbsp;
  
-Table 5 Communication protocol merit analysis
+**Table 5 Communication protocol merit analysis**
   
 |                         | Zigbee            | Wi-Fi              |
 |-------------------------|-------------------|--------------------|
@@ -297,8 +303,9 @@ Table 5 Communication protocol merit analysis
 | Cost per unit           | $11.00[20]        | $10.50[21]         |
 | Maximum node connection | 65k cell nodes[9] | 2007 cell nodes[9] |
 | Battery life (days)     | 100-7000[9]       | 0.1-5[9]           |
-  
-  
+
+&nbsp;
+
 Sensors
 The Arduino Hygrometer, SFESMS, and DFRobot’s “Capacitive Soil Moisture Sensor” were checked against the feasibility and merit criteria to determine which potential soil moisture sensor would be selected for this project. Each of them met the feasibility criteria for microcontroller interface capability, costing less than $15, in-soil operability, and analog output capability. The Arduino Hygrometer, shown in Figure 4, was selected as the best alternative for a soil moisture sensor, as it had the cheapest price. The prices were $2.75[20], $4.95[21], and $7.90[22], respectively.
 
@@ -327,9 +334,10 @@ The decision process to determine the proper power supply for a sensor node unde
 Table 6 uses a the following algorithm to determine the average continuous current (mA) required for one hour of operation by a power source in milliamp/hours (mA) at 20℃.
 X=(IA*tA+IS*(3600000-tA))/3600000
 IA and IS represent the respective active and sleep currents in milliamps (mA) of the chosen circuit components. Their values come from the two left-middle columns of Table 6. tA and 3600000-tA represent the number of milliseconds (ms) the circuit components will be in active and sleep modes per hour, respectively. Their values come from the two right-middle columns of Table 6. The values in the far right column of Table 6 are the result of the using the algorithm on each row. The bottom right cell contains the summation of the results of using the algorithm on each of the above rows of Table 6.
-  
-  
-Table 6 Sensor node average current consumption calculations for one hour 
+
+&nbsp;
+
+**Table 6 Sensor node average current consumption calculations for one hour**
   
 |                              | Current (mA) |         | Time (ms) |         | Average continuous current consumed for one hour (mA) |
 |------------------------------|--------------|---------|-----------|---------|-------------------------------------------------------|
@@ -340,9 +348,10 @@ Table 6 Sensor node average current consumption calculations for one hour
 | STM32 L4 microcontroller[3]  | 0.1          | 0.00012 | 15        | 3599985 | 0.0001204161667                                       |
 | ZigBee transceiver[13]       | 23           | 0.002   | 1         | 3599999 | 0.002006388333                                        |
 | Sensor node total            |              |         |           |         | 0.06516011283                                         |
-  
-  
-Table 7 Typical alkaline battery life calculation values [24]
+
+&nbsp;
+
+**Table 7 Typical alkaline battery life calculation values [24]**
   
 | Battery type   | Capacity (mAh) | Typical Drain (mA) |
 |----------------|----------------|--------------------|
@@ -472,6 +481,8 @@ Gantt chart
 
 
  
+ &nbsp;
+ 
 | Component                              | Unit(s) | Seller        | Unit cost | Total cost |
 |----------------------------------------|---------|---------------|-----------|------------|
 | Arduino hygrometer[20]                 | 3       | Resistor Park | $2.75     | $8.25      |
@@ -487,7 +498,9 @@ Gantt chart
 | Subtotal                               |         |               |           | $323.28    |
 | Miscellaneous                          |         |               |           | $26.72     |
 | Total                                  |         |               |           | $350.00    |
-  
+
+&nbsp;
+
 
 Team Resumes
 
