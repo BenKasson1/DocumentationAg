@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: PDR
 date: 2016-11-14 12:43:44 +0000
 permalink: /PDR/
