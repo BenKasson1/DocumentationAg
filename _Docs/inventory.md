@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Project Inventory
 date: 2016-11-14 11:43:44 +0000
 permalink: /Invntry/
