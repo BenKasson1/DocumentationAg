@@ -19,8 +19,8 @@ description: > # this means to ignore newlines until "baseurl:"
   We have received the final PDR, a project inventory (living document), as well as a feasibility / merit criteria point spreadsheet.
   We intend to expand documentation of the sensors, as well as the micro-controller.
   Our team plans to publish all of these to a well formatted documentation website we create for the project. 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://example.com" # the base hostname & protocol for your site
+baseurl: "/DocumentationAg" # the subpath of your site, e.g. /blog
+url: "http://benkasson1.github.io/DocumentationAg" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 
