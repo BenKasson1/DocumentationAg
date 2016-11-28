@@ -21,7 +21,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Our team plans to publish all of these to a well formatted documentation website we create for the project. 
 baseurl: "/DocumentationAg" # the subpath of your site, e.g. /blog
 url: "http://benkasson1.github.io/DocumentationAg" # the base hostname & protocol for your site
-include: ['pages']
+include: ['_Docs']
 twitter_username: jekyllrb
 github_username:  jekyll
 
